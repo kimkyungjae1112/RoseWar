@@ -76,6 +76,9 @@ void AAIControllerEnemyRanged::ReciveEnemyAttackCommand()
 void AAIControllerEnemyRanged::ReciveEnemyRetreatCommand()
 {
 	Super::ReciveEnemyRetreatCommand();
+
+	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), false);
+	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
 }
 
 void AAIControllerEnemyRanged::ReciveEnemyRestCommand()

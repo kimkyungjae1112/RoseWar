@@ -79,6 +79,9 @@ void AAIControllerEnemyMelee::ReciveEnemyAttackCommand()
 void AAIControllerEnemyMelee::ReciveEnemyRetreatCommand()
 {
 	Super::ReciveEnemyRetreatCommand();
+
+	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), false);
+	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
 }
 
 void AAIControllerEnemyMelee::ReciveEnemyRestCommand()

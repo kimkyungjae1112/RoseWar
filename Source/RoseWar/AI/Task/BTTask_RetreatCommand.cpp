@@ -7,7 +7,7 @@
 
 UBTTask_RetreatCommand::UBTTask_RetreatCommand()
 {
-	NodeName = TEXT("AttackCommand");
+	NodeName = TEXT("RetreatCommand");
 }
 
 EBTNodeResult::Type UBTTask_RetreatCommand::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
