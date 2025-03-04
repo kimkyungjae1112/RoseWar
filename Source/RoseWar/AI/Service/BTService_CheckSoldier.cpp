@@ -20,7 +20,7 @@ void UBTService_CheckSoldier::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 
 	if (TotalCurrentHp / TotalMaxHp <= 0.7f)
 	{
-		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("RetreatCommand"), true);
+		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("RetreatState"), true);
 	}
 
 }

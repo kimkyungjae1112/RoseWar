@@ -4,6 +4,7 @@
 #include "AI/Task/BTTask_AttackCommand.h"
 #include "AIController.h"
 #include "Interface/EnemyCommanderInterface.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 UBTTask_AttackCommand::UBTTask_AttackCommand()
 {
@@ -19,6 +20,8 @@ EBTNodeResult::Type UBTTask_AttackCommand::ExecuteTask(UBehaviorTreeComponent& O
 
 	IEnemyCommanderInterface* Interface = Cast<IEnemyCommanderInterface>(OwnerPawn);
 	if (Interface == nullptr) return EBTNodeResult::Failed;
+
+	OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), true);
 
 	Interface->EnemyAttackCommand();
 

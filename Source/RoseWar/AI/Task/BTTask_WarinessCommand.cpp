@@ -4,6 +4,7 @@
 #include "AI/Task/BTTask_WarinessCommand.h"
 #include "AIController.h"
 #include "Interface/EnemyCommanderInterface.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 UBTTask_WarinessCommand::UBTTask_WarinessCommand()
 {
@@ -19,6 +20,8 @@ EBTNodeResult::Type UBTTask_WarinessCommand::ExecuteTask(UBehaviorTreeComponent&
 
 	IEnemyCommanderInterface* Interface = Cast<IEnemyCommanderInterface>(OwnerPawn);
 	if (Interface == nullptr) return EBTNodeResult::Failed;
+
+	OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessCommand"), true);
 
 	Interface->EnemyWarinessCommand();
 

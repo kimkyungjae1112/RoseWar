@@ -23,6 +23,7 @@ ARWCharacterAIEnemyCommander::ARWCharacterAIEnemyCommander()
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Enemy"));
 
 	BehaviorComp = CreateDefaultSubobject<URWAIBehaviorComponent>(TEXT("Behavior Component"));
+	BehaviorComp->OnCompAttackFinished.BindUObject(this, &ARWCharacterAIEnemyCommander::EndAttack);
 }
 
 void ARWCharacterAIEnemyCommander::EnemyWarinessCommand()

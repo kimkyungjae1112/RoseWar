@@ -4,6 +4,8 @@
 #include "AI/Task/BTTask_RetreatCommand.h"
 #include "AIController.h"
 #include "Interface/EnemyCommanderInterface.h"
+#include "BehaviorTree/BlackboardComponent.h"
+#include "RoseWar.h"
 
 UBTTask_RetreatCommand::UBTTask_RetreatCommand()
 {
@@ -19,6 +21,10 @@ EBTNodeResult::Type UBTTask_RetreatCommand::ExecuteTask(UBehaviorTreeComponent& 
 
 	IEnemyCommanderInterface* Interface = Cast<IEnemyCommanderInterface>(OwnerPawn);
 	if (Interface == nullptr) return EBTNodeResult::Failed;
+
+	OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessCommand"), false);
+	OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
+	OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("RetreatCommand"), true);
 
 	Interface->EnemyRetreatCommand();
 

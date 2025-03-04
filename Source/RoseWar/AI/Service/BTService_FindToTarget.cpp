@@ -24,13 +24,13 @@ void UBTService_FindToTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 	float Dist = FVector::Dist(Owner->GetActorLocation(), Target->GetActorLocation());
 	if (Dist <= 2000.f) //공격
 	{
-		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), true);
-		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessCommand"), false);
+		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackState"), true);
+		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessState"), true);
 	}
 	else if (Dist <= 8000.f && Dist > 2000.f) //경계
 	{
-		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
-		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessCommand"), true);
+		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("AttackState"), false);
+		OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("WarinessState"), true);
 	}
 
 

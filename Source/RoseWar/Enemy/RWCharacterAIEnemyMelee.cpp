@@ -58,8 +58,8 @@ void ARWCharacterAIEnemyMelee::ReadyForBattle()
 	LeftWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
 	RightWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
 	
-	LeftWeaponMeshComp->SetSkeletalMesh(nullptr);
-	RightWeaponMeshComp->SetSkeletalMesh(nullptr);
+	LeftWeaponSocketComp->SetSkeletalMesh(nullptr);
+	RightWeaponSocketComp->SetSkeletalMesh(nullptr);
 	//임시 -> Notify 로 옮길것
 }
 
@@ -69,8 +69,8 @@ void ARWCharacterAIEnemyMelee::ReadyForRest()
 	LeftWeaponMeshComp->SetSkeletalMesh(nullptr);
 	RightWeaponMeshComp->SetSkeletalMesh(nullptr);
 
-	LeftWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
-	RightWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
+	LeftWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
+	RightWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
 	//임시 -> Notify 로 옮길것
 }
 
