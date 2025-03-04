@@ -60,8 +60,9 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Weapon")
 	TObjectPtr<USkeletalMeshComponent> RightWeaponSocketComp;
 
-/* Test */
+/* Data */
 private:
+	//Weapon
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USkeletalMesh> WeaponMesh;
 };

@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "EnemyReadyForBattleInterface.generated.h"
+#include "ReadyForBattleInterface.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
-class UEnemyReadyForBattleInterface : public UInterface
+class UReadyForBattleInterface : public UInterface
 {
 	GENERATED_BODY()
 };
 
-class ROSEWAR_API IEnemyReadyForBattleInterface
+class ROSEWAR_API IReadyForBattleInterface
 {
 	GENERATED_BODY()
 

@@ -22,7 +22,6 @@ ARWCharacterAIEnemyMelee::ARWCharacterAIEnemyMelee()
 	BehaviorComp = CreateDefaultSubobject<URWAIBehaviorComponent>(TEXT("Behavior Component"));
 	BehaviorComp->OnCompAttackFinished.BindUObject(this, &ARWCharacterAIEnemyMelee::EndAttack);
 
-	/* Test */
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> WeaponMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_weapon_01.SK_weapon_01'"));
 	if (WeaponMeshRef.Object)
 	{

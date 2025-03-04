@@ -20,6 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	/* Command Ability */
+	virtual void ReciveWarinessCommand();
 	virtual void ReciveAttackCommand();
 	virtual void ReciveRetreatCommand();
 	virtual void ReciveRestCommand();

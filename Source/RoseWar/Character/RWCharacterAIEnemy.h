@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Character/RWCharacterAIBase.h"
-#include "Interface/EnemyReadyForBattleInterface.h"
+#include "Interface/ReadyForBattleInterface.h"
 #include "RWCharacterAIEnemy.generated.h"
 
 UCLASS()
-class ROSEWAR_API ARWCharacterAIEnemy : public ARWCharacterAIBase, public IEnemyReadyForBattleInterface
+class ROSEWAR_API ARWCharacterAIEnemy : public ARWCharacterAIBase, public IReadyForBattleInterface
 {
 	GENERATED_BODY()
 
@@ -23,7 +23,7 @@ public:
 	/* IGenericTeamAgentInterface Implement */
 	virtual FGenericTeamId GetGenericTeamId() const override;
 
-	/* IEnemyReadyForBattleInterface Implement */
+	/* IReadyForBattleInterface Implement */
 	virtual void ReadyForBattle() override;
 	virtual void ReadyForRest() override;
 

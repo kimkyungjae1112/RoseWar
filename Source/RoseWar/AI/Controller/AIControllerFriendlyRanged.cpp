@@ -94,18 +94,30 @@ void AAIControllerFriendlyRanged::OnPerceptionUpdated(const TArray<AActor*>& Upd
 	}
 }
 
+void AAIControllerFriendlyRanged::ReciveWarinessCommand()
+{
+	Super::ReciveWarinessCommand();
+
+}
+
 void AAIControllerFriendlyRanged::ReciveAttackCommand()
 {
+	Super::ReciveAttackCommand();
+
 	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), true);
 	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), true);
 }
 
 void AAIControllerFriendlyRanged::ReciveRetreatCommand()
 {
+	Super::ReciveRetreatCommand();
+
 	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), false);
 	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
 }
 
 void AAIControllerFriendlyRanged::ReciveRestCommand()
 {
+	Super::ReciveRestCommand();
+
 }

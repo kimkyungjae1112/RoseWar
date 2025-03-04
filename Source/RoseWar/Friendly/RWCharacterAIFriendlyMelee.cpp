@@ -21,6 +21,22 @@ ARWCharacterAIFriendlyMelee::ARWCharacterAIFriendlyMelee()
 
 	BehaviorComp = CreateDefaultSubobject<URWAIBehaviorComponent>(TEXT("Behavior Component"));
 	BehaviorComp->OnCompAttackFinished.BindUObject(this, &ARWCharacterAIFriendlyMelee::EndAttack);
+
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> WeaponMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/SKnight_modular/Skeleton_Knight_01/mesh/weapon/SK_weapon_01.SK_weapon_01'"));
+	if (WeaponMeshRef.Object)
+	{
+		WeaponMesh = WeaponMeshRef.Object;
+	}
+
+	LeftWeaponSocketComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LeftWeaponSocketComponent"));
+	LeftWeaponSocketComp->SetupAttachment(GetMesh());
+	LeftWeaponSocketComp->SetLeaderPoseComponent(GetMesh());
+	LeftWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
+
+	RightWeaponSocketComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("RightWeaponSocketComponent"));
+	RightWeaponSocketComp->SetupAttachment(GetMesh());
+	RightWeaponSocketComp->SetLeaderPoseComponent(GetMesh());
+	RightWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
 }
 
 void ARWCharacterAIFriendlyMelee::AttackByAI()
@@ -30,6 +46,31 @@ void ARWCharacterAIFriendlyMelee::AttackByAI()
 	BeginAttack();
 }
 
+USkeletalMeshComponent* ARWCharacterAIFriendlyMelee::GetSwordBone()
+{
+	return RightWeaponMeshComp;
+}
+
+void ARWCharacterAIFriendlyMelee::ReadyForBattle()
+{
+	BehaviorComp->Wariness();
+	LeftWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
+	RightWeaponMeshComp->SetSkeletalMesh(WeaponMesh);
+
+	LeftWeaponSocketComp->SetSkeletalMesh(nullptr);
+	RightWeaponSocketComp->SetSkeletalMesh(nullptr);
+}
+
+void ARWCharacterAIFriendlyMelee::ReadyForRest()
+{
+	BehaviorComp->UnWariness();
+	LeftWeaponMeshComp->SetSkeletalMesh(nullptr);
+	RightWeaponMeshComp->SetSkeletalMesh(nullptr);
+
+	LeftWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
+	RightWeaponSocketComp->SetSkeletalMesh(WeaponMesh);
+}
+
 float ARWCharacterAIFriendlyMelee::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	float SuperResult = Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
@@ -37,11 +78,6 @@ float ARWCharacterAIFriendlyMelee::TakeDamage(float Damage, FDamageEvent const& 
 	RunParticle();
 
 	return 0.0f;
-}
-
-USkeletalMeshComponent* ARWCharacterAIFriendlyMelee::GetSwordBone()
-{
-	return RightWeaponMeshComp;
 }
 
 void ARWCharacterAIFriendlyMelee::BeginPlay()

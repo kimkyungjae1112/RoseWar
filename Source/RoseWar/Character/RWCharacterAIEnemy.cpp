@@ -73,7 +73,7 @@ float ARWCharacterAIEnemy::TakeDamage(float Damage, FDamageEvent const& DamageEv
 {
 	Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 
-	CheckDeath() ? URWGameSingleton::Get().SubAIEnemyHealth(StatComp->GetCurrentHp() * -1) : URWGameSingleton::Get().SubAIEnemyHealth(Damage);
+	CheckDeath() ? URWGameSingleton::Get().SubAIEnemyHealth(Damage + StatComp->GetCurrentHp()) : URWGameSingleton::Get().SubAIEnemyHealth(Damage);
 
 	return 0.0f;
 }

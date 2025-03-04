@@ -3,7 +3,7 @@
 
 #include "AI/Controller/AIControllerEnemyBase.h"
 #include "Character/RWCharacterAIEnemy.h"
-#include "Interface/EnemyReadyForBattleInterface.h"
+#include "Interface/ReadyForBattleInterface.h"
 #include "RoseWar.h"
 
 int32 AAIControllerEnemyBase::SpawnOrder = 0;
@@ -30,7 +30,7 @@ void AAIControllerEnemyBase::OnPossess(APawn* InPawn)
 
 void AAIControllerEnemyBase::ReciveEnemyWarinessCommand()
 {
-	IEnemyReadyForBattleInterface* Interface = Cast<IEnemyReadyForBattleInterface>(GetPawn());
+	IReadyForBattleInterface* Interface = Cast<IReadyForBattleInterface>(GetPawn());
 	if (Interface)
 	{
 		Interface->ReadyForBattle();
@@ -47,7 +47,7 @@ void AAIControllerEnemyBase::ReciveEnemyRetreatCommand()
 
 void AAIControllerEnemyBase::ReciveEnemyRestCommand()
 {
-	IEnemyReadyForBattleInterface* Interface = Cast<IEnemyReadyForBattleInterface>(GetPawn());
+	IReadyForBattleInterface* Interface = Cast<IReadyForBattleInterface>(GetPawn());
 	if (Interface)
 	{
 		Interface->ReadyForRest();

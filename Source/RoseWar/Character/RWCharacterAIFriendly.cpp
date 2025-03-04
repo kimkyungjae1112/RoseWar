@@ -2,6 +2,7 @@
 
 
 #include "Character/RWCharacterAIFriendly.h"
+#include "Animation/RWAnimInstance.h"
 
 ARWCharacterAIFriendly::ARWCharacterAIFriendly() 
 {
@@ -41,6 +42,24 @@ ARWCharacterAIFriendly::ARWCharacterAIFriendly()
 FGenericTeamId ARWCharacterAIFriendly::GetGenericTeamId() const
 {
 	return TeamId;
+}
+
+void ARWCharacterAIFriendly::ReadyForBattle()
+{
+	URWAnimInstance* RWAnim = Cast<URWAnimInstance>(GetMesh()->GetAnimInstance());
+	if (RWAnim)
+	{
+		RWAnim->bIsWariness = true;
+	}
+}
+
+void ARWCharacterAIFriendly::ReadyForRest()
+{
+	URWAnimInstance* RWAnim = Cast<URWAnimInstance>(GetMesh()->GetAnimInstance());
+	if (RWAnim)
+	{
+		RWAnim->bIsWariness = false;
+	}
 }
 
 void ARWCharacterAIFriendly::AttackByAI()

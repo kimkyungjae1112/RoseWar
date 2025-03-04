@@ -24,6 +24,7 @@ private:
 	UFUNCTION()
 	void OnPerceptionUpdated(const TArray<AActor*>& UpdatedActors);
 
+	virtual void ReciveWarinessCommand() override; 
 	virtual void ReciveAttackCommand() override;
 	virtual void ReciveRetreatCommand() override;
 	virtual void ReciveRestCommand() override;

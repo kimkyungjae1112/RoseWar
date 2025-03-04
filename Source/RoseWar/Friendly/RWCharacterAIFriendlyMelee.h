@@ -24,11 +24,16 @@ public:
 	/* IClassIdentifierInterface Implement */
 	virtual FName SetupClassName() override { return ClassName; }
 
-	/* Damaged */
-	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
-
 	/* ISwordAttackCheckInterface Implement */
 	virtual class USkeletalMeshComponent* GetSwordBone() override;
+
+	/* IEnemyReadyForBattleInterface Implement */
+	virtual void ReadyForBattle() override;
+	virtual void ReadyForRest() override;
+
+	/* Damaged */
+	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	
 
 protected:
 	virtual void BeginPlay() override;
@@ -50,4 +55,15 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Animation")
 	TObjectPtr<URWAIBehaviorComponent> BehaviorComp;
 
+	UPROPERTY(VisibleAnywhere, Category = "Weapon")
+	TObjectPtr<USkeletalMeshComponent> LeftWeaponSocketComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Weapon")
+	TObjectPtr<USkeletalMeshComponent> RightWeaponSocketComp;
+
+/* Data */
+private:
+	//Weapon
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<USkeletalMesh> WeaponMesh;
 };

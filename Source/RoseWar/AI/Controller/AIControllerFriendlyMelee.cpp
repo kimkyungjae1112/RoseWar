@@ -94,18 +94,29 @@ void AAIControllerFriendlyMelee::OnPerceptionUpdated(const TArray<AActor*>& Upda
 	}
 }
 
+void AAIControllerFriendlyMelee::ReciveWarinessCommand()
+{
+	Super::ReciveWarinessCommand();
+}
+
 void AAIControllerFriendlyMelee::ReciveAttackCommand()
 {
+	Super::ReciveAttackCommand();
+
 	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), true);
 	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), true);
 }
 
 void AAIControllerFriendlyMelee::ReciveRetreatCommand()
 {
+	Super::ReciveRetreatCommand();
+
 	GetBlackboardComponent()->SetValueAsBool(TEXT("ReciveCommand"), false);
 	GetBlackboardComponent()->SetValueAsBool(TEXT("AttackCommand"), false);
 }
 
 void AAIControllerFriendlyMelee::ReciveRestCommand()
 {
+	Super::ReciveRestCommand();
+
 }

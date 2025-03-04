@@ -4,6 +4,7 @@
 #include "UI/CommandWindowWidget.h"
 #include "Components/Button.h"
 #include "Character/RWCharacterBase.h"
+#include "RoseWar.h"
 
 UCommandWindowWidget::UCommandWindowWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
@@ -30,6 +31,7 @@ void UCommandWindowWidget::NativeConstruct()
 
 void UCommandWindowWidget::RunWarinessCommand()
 {
+    RW_LOG(LogRoseWar, Display, TEXT("Wariness Button Click"));
     ARWCharacterBase::OnWarinessCommand.Broadcast();
 }
 
