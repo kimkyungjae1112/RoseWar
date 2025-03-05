@@ -19,9 +19,12 @@
 #include "Animation/AnimMontage.h"
 #include "Data/RWComboAttackData.h"
 #include "MotionWarpingComponent.h"
+#include "RoseWar.h"
 
 ARWCharactePlayer::ARWCharactePlayer()
 {
+	ClassName = TEXT("Player");
+
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
@@ -120,12 +123,6 @@ void ARWCharactePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 void ARWCharactePlayer::SetHUDWidget(UHUDWidget* InHUDWidget)
 {
 	HUDWidget = InHUDWidget;
-	if (HUDWidget)
-	{
-		HUDWidget->SetMaxHp(StatComp->GetTotalStat().MaxHp);
-		HUDWidget->UpdateHpBar(StatComp->GetTotalStat().MaxHp);
-		StatComp->OnHpChanged.AddUObject(HUDWidget, &UHUDWidget::UpdateHpBar);
-	}
 }
 
 FGenericTeamId ARWCharactePlayer::GetGenericTeamId() const
@@ -149,6 +146,13 @@ void ARWCharactePlayer::BeginPlay()
 
 	Anim = GetMesh()->GetAnimInstance();
 	ensure(Anim);
+
+	if (HUDWidget)
+	{
+		HUDWidget->SetMaxHp(StatComp->GetTotalStat().MaxHp);
+		HUDWidget->UpdateHpBar(StatComp->GetTotalStat().MaxHp);
+		StatComp->OnHpChanged.AddUObject(HUDWidget, &UHUDWidget::UpdateHpBar);
+	}
 }
 
 APlayerController* ARWCharactePlayer::GetPlayerController()

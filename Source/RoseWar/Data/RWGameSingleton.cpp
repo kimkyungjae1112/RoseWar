@@ -35,10 +35,10 @@ URWGameSingleton::URWGameSingleton()
 		for (const auto& Elem : AnimMontageDataTable->GetRowMap())
 		{
 			const FName& RowName = Elem.Key;
-			const FRWAnimMontageData* StatPtr = reinterpret_cast<const FRWAnimMontageData*>(Elem.Value);
-			if (StatPtr)
+			const FRWAnimMontageData* AnimMontagePtr = reinterpret_cast<const FRWAnimMontageData*>(Elem.Value);
+			if (AnimMontagePtr)
 			{
-				AnimMontageTable.Add(RowName, *StatPtr);
+				AnimMontageTable.Add(RowName, *AnimMontagePtr);
 			}
 		}
 	}

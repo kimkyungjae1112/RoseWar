@@ -10,6 +10,8 @@
 
 ARWCharacterAIFriendlyMelee::ARWCharacterAIFriendlyMelee()
 {
+	ClassName = TEXT("DualSword");
+
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> BodyMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/MRPGT/SkeletalMeshes/Humans/PlateArmour_C/SK_Plate_Torso_C_3.SK_Plate_Torso_C_3'"));
 	if (BodyMeshRef.Object)
 	{

@@ -112,8 +112,8 @@ protected:
 
 	FGenericTeamId TeamId;
 	
-	/* 블루프린트에서 해당 값을 조절한다. */
-	UPROPERTY(EditDefaultsOnly, Category = "Class")
+	/* CPP 에서 해당 값을 초기화 해줘야함. */
+	UPROPERTY(VisibleAnywhere, Category = "Class")
 	FName ClassName;
 
 

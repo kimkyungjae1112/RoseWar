@@ -12,6 +12,8 @@
 
 ARWCharacterAIEnemyCommander::ARWCharacterAIEnemyCommander()
 {
+	ClassName = TEXT("Commander");
+
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> BodyMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/MRPGT/SkeletalMeshes/Humans/PlateArmour_C/SK_Plate_Torso_C_3_Black.SK_Plate_Torso_C_3_Black'"));
 	if (BodyMeshRef.Object)
 	{

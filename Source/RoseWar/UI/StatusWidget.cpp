@@ -3,6 +3,7 @@
 
 #include "UI/StatusWidget.h"
 #include "Components/ProgressBar.h"
+#include "RoseWar.h"
 
 UStatusWidget::UStatusWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
@@ -22,6 +23,7 @@ void UStatusWidget::NativeConstruct()
 
 void UStatusWidget::UpdateHpBar(float NewHp)
 {
+	RW_LOG(LogRoseWar, Display, TEXT("현재 체력 퍼센트 : %f"), NewHp / MaxHp);
 	HpBar->SetPercent(NewHp / MaxHp);
 }
 

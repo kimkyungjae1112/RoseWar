@@ -57,3 +57,10 @@ void URWStatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 }
 
+void URWStatComponent::InitializeComponent()
+{
+	Super::InitializeComponent();
+
+	
+}
+
