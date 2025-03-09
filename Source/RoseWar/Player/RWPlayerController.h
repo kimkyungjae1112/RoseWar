@@ -24,6 +24,9 @@ public:
 	void HiddenInteractWidget();
 	bool IsInViewportInteractWidget();
 
+	/* Roguelike Game */
+	void NextStage();
+
 protected:
 	virtual void BeginPlay() override;
 

@@ -10,7 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputMappingContext.h"
 #include "Data/RWInputData.h"
-#include "Component/RWStatComponent.h"
+#include "Component/RWPlayerStatComponent.h"
 #include "UI/HUDWidget.h"
 #include "Player/RWPlayerController.h"
 #include "Interact/RWHorse.h"
@@ -92,7 +92,7 @@ ARWCharactePlayer::ARWCharactePlayer()
 		ComboData = ComboDataRef.Object;
 	}
 
-	StatComp = CreateDefaultSubobject<URWStatComponent>(TEXT("Stat Component"));
+	StatComp = CreateDefaultSubobject<URWPlayerStatComponent>(TEXT("Stat Component"));
 	StatComp->OnHpZero.AddUObject(this, &ARWCharactePlayer::SetDead);
 
 	MotionWarpComp = CreateDefaultSubobject<UMotionWarpingComponent>(TEXT("MotionWarping"));
@@ -151,6 +151,7 @@ void ARWCharactePlayer::BeginPlay()
 	{
 		HUDWidget->SetMaxHp(StatComp->GetTotalStat().MaxHp);
 		HUDWidget->UpdateHpBar(StatComp->GetTotalStat().MaxHp);
+		HUDWidget->SetMoney(StatComp->GetCurrentMoney());
 		StatComp->OnHpChanged.AddUObject(HUDWidget, &UHUDWidget::UpdateHpBar);
 	}
 }

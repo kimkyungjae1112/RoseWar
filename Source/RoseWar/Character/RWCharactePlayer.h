@@ -14,7 +14,7 @@ class UCameraComponent;
 class URWInputData;
 class APlayerController;
 class UHUDWidget;
-class URWStatComponent;
+class URWPlayerStatComponent;
 class ARWPlayerController;
 class UAnimInstance;
 class UAnimMontage;
@@ -115,7 +115,7 @@ private:
 /* Component */
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Stat")
-	TObjectPtr<URWStatComponent> StatComp;
+	TObjectPtr<URWPlayerStatComponent> StatComp;
 
 	UPROPERTY(VisibleAnywhere, Category = "MotionWarp")
 	TObjectPtr<UMotionWarpingComponent> MotionWarpComp;

@@ -23,7 +23,6 @@ protected:
 
 public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	virtual void InitializeComponent() override;
 
 public:
 	FOnHpZero OnHpZero;

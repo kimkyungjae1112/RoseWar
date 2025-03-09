@@ -8,6 +8,7 @@
 
 class UStatusWidget;
 class UCommandWindowWidget;
+class UTextBlock;
 
 UCLASS()
 class ROSEWAR_API UHUDWidget : public UUserWidget
@@ -29,6 +30,10 @@ public:
 	void DisplayCommandWidget();
 	void HiddenCommandWidget();
 
+/* GameData */
+public:
+	void SetMoney(float InMoney);
+
 protected:
 	virtual void NativeConstruct() override;
 
@@ -38,6 +43,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "CommandWindow")
 	TObjectPtr<UCommandWindowWidget> CommandWidget;
+
+	UPROPERTY(VisibleAnywhere, Category = "Money")
+	TObjectPtr<UTextBlock> MoneyWidget;
 
 private:
 	bool bIsOnCommandWidget = false;

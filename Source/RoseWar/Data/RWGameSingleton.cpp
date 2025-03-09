@@ -42,6 +42,25 @@ URWGameSingleton::URWGameSingleton()
 			}
 		}
 	}
+
+	static ConstructorHelpers::FObjectFinder<UDataTable> RoguelikeGameTableRef(TEXT("/Script/Engine.DataTable'/Game/Data/RWRoguelikeGameDataTable.RWRoguelikeGameDataTable'"));
+	if (RoguelikeGameTableRef.Succeeded())
+	{
+		const UDataTable* RoguelikeGameDataTable = RoguelikeGameTableRef.Object;
+		check(RoguelikeGameDataTable->GetRowMap().Num() > 0);
+
+		TArray<uint8*> ValueArray;
+		RoguelikeGameDataTable->GetRowMap().GenerateValueArray(ValueArray);
+		Algo::Transform(ValueArray, RoguelikeGameTable,
+			[](uint8* Value)
+			{
+				return *reinterpret_cast<FRWRoguelikeGameData*>(Value);
+			}
+		);
+
+		StageMaxLevel = RoguelikeGameTable.Num();
+		ensure(StageMaxLevel > 0);
+	}
 }
 
 URWGameSingleton& URWGameSingleton::Get()

@@ -70,7 +70,7 @@ void USwordAttackCheckNotifyState::MakeLineTrace(AActor* Character)
 				{
 					APawn* Instigator = Cast<APawn>(Character);
 					FDamageEvent DamageEvent;
-					HitResult.GetActor()->TakeDamage(100.f, DamageEvent, Instigator->GetController(), Character);
+					HitResult.GetActor()->TakeDamage(900.f, DamageEvent, Instigator->GetController(), Character);
 
 					DrawDebugSphere(World, HitResult.ImpactPoint, 15.f, 32, FColor::Green, false, 3.f);
 				}

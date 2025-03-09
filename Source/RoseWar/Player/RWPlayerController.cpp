@@ -4,6 +4,7 @@
 #include "Player/RWPlayerController.h"
 #include "UI/HUDWidget.h"
 #include "UI/CommandWindowWidget.h"
+#include "Player/RWPlayerState.h"
 
 ARWPlayerController::ARWPlayerController()
 {
@@ -96,6 +97,11 @@ bool ARWPlayerController::IsInViewportInteractWidget()
 	return InteractWidget->IsInViewport();
 }
 
+void ARWPlayerController::NextStage()
+{
+	HUDWidget->SetMoney(GetPlayerState<ARWPlayerState>()->GetCurrentMoney());
+}
+
 void ARWPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -107,6 +113,7 @@ void ARWPlayerController::BeginPlay()
 	if (HUDWidget)
 	{
 		HUDWidget->AddToViewport();
+		NextStage();
 	}
 
 	InteractWidget = CreateWidget(this, InteractWidgetClass);
